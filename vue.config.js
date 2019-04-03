@@ -6,11 +6,11 @@ function resolve (dir) {
 
 module.exports = {
   //  将部署应用程序的基本URL
-  baseUrl: '/',
+  publicPath: '/',
   //  运行时将生成生成构建文件的目录
   outputDir: process.env.outputDir,
   //  用于嵌套生成的静态资产（js，css，img，fonts）的目录。
-  //assetsDir: '',
+  // assetsDir: '',
   //  以多页模式构建应用程序。
   pages: undefined,
   //  是否使用eslint-loader在开发期间执行lint-on-save 。
@@ -33,14 +33,15 @@ module.exports = {
     extract: true,
     //  css sourceMap
     sourceMap: false,
-    loaderOptions: {},
+    loaderOptions: {}
   },
   //  代理相关配置
   devServer: {
+    open: true,
     host: '0.0.0.0',
     port: 8080,
     https: false,
     hotOnly: false,
-    proxy: null, // string | Object
-  },
+    proxy: null // string | Object
+  }
 }
