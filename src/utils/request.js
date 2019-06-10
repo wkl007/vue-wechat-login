@@ -7,7 +7,7 @@ const service = axios.create({
   timeout: 5000 // request timeout
 })
 
-//http 请求拦截器
+// http 请求拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token) {
     config.headers['Authorization'] = 'JWT ' + store.getters.token
@@ -17,12 +17,12 @@ service.interceptors.request.use(config => {
   return Promise.reject(error)
 })
 
-//http 响应拦截器
+// http 响应拦截器
 service.interceptors.response.use(response => {
   const res = response.data
   if (res.status === 0 && (res.errCode === 401 || res.errCode === 403)) {
     store.dispatch('setLoginStatus', 0)
-    //重新登录
+    // 重新登录
     window.location.reload()
   }
   return res

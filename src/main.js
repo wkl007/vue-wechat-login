@@ -2,18 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/index'
-import wechatAuth from './plugins/wechatAuth'//微信登录插件
-import './utils/rem'//rem适配
+import wechatAuth from './plugins/wechatAuth'// 微信登录插件
+import './utils/rem'// rem适配
 
 import './assets/style/reset.css'
 
 const qs = require('qs')
 
 router.beforeEach((to, from, next) => {
-  if (store.state.loginStatus == 0) {
-    //微信未授权登录跳转到授权登录页面
+  console.log(store.state)
+  const loginStatus = Number(store.state.loginStatus)
+  if (loginStatus === 0) {
+    // 微信未授权登录跳转到授权登录页面
     let url = window.location.href
-    //解决重复登录url添加重复的code与state问题
+    // 解决重复登录url添加重复的code与state问题
     let parseUrl = qs.parse(url.split('?')[1])
     let loginUrl
     if (parseUrl.code && parseUrl.state) {
@@ -26,7 +28,7 @@ router.beforeEach((to, from, next) => {
     wechatAuth.redirect_uri = loginUrl
     store.dispatch('setLoginStatus', 1)
     window.location.href = wechatAuth.authUrl
-  } else if (store.state.loginStatus == 1) {
+  } else if (loginStatus === 1) {
     try {
       wechatAuth.returnFromWechat(to.fullPath)
     } catch (err) {
@@ -34,7 +36,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
     store.dispatch('loginWechatAuth', wechatAuth.code).then((res) => {
-      if (res.status == 1) {
+      if (res.status === 1) {
         store.dispatch('setLoginStatus', 2)
       } else {
         store.dispatch('setLoginStatus', 0)

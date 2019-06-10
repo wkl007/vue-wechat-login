@@ -1,9 +1,9 @@
 import cookies from 'js-cookie'
 import storage from 'good-storage'
 
-const LoginStatusKey = 'Login-Status'     //登录态 0 1 2
-const TokenKey = 'Access-Token'           //token
-const UserInfoKey = 'User-Info'           //用户信息 {} {...}
+const LoginStatusKey = 'Login-Status'// 登录态 0 1 2
+const TokenKey = 'Access-Token'// token
+const UserInfoKey = 'User-Info'// 用户信息 {} {...}
 
 export function loadLoginStatus () {
   return cookies.get(LoginStatusKey) || 0
@@ -46,6 +46,3 @@ export function removeUserInfo () {
   storage.remove(UserInfoKey)
   return {}
 }
-
-
-

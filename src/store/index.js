@@ -8,7 +8,7 @@ import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
-//  调试工具,开发环境使用，上线关闭
+// 调试工具,开发环境使用，上线关闭
 const debug = process.env.NODE_ENV !== 'production'
 
 const store = new Vuex.Store({

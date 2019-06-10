@@ -1,9 +1,8 @@
 const qs = require('qs')
-//应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
+// 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
 const SCOPES = ['snsapi_base', 'snsapi_userinfo']
 
 class VueWechatAuthPlugin {
-
   constructor () {
     this.appid = null
     this.redirect_uri = null
@@ -20,7 +19,6 @@ class VueWechatAuthPlugin {
         this.$wechatAuth = wechatAuth
       },
     })
-
   }
 
   static makeState () {
@@ -32,10 +30,12 @@ class VueWechatAuthPlugin {
     this.appid = appid
   }
 
+  // eslint-disable-next-line camelcase
   set redirect_uri (redirect_uri) {
     this._redirect_uri = encodeURIComponent(redirect_uri)
   }
 
+  // eslint-disable-next-line camelcase
   get redirect_uri () {
     return this._redirect_uri
   }
@@ -50,15 +50,18 @@ class VueWechatAuthPlugin {
 
   get authUrl () {
     if (this.appid === null) {
+      // eslint-disable-next-line no-throw-literal
       throw 'appid must not be null'
     }
     if (this.redirect_uri === null) {
+      // eslint-disable-next-line no-throw-literal
       throw 'redirect uri must not be null'
     }
     this.state = VueWechatAuthPlugin.makeState()
     return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirect_uri}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
   }
 
+  // eslint-disable-next-line camelcase
   returnFromWechat (redirect_uri) {
     let parsedUrl = qs.parse(redirect_uri.split('?')[1])
     if (process.env.NODE_ENV === 'development') {
@@ -67,6 +70,7 @@ class VueWechatAuthPlugin {
       this._code = parsedUrl.code
     } else {
       if (this.state === null) {
+        // eslint-disable-next-line no-throw-literal
         throw 'You did\'t set state'
       }
       if (parsedUrl.state === this.state) {
@@ -74,6 +78,7 @@ class VueWechatAuthPlugin {
         this._code = parsedUrl.code
       } else {
         this.state = null
+        // eslint-disable-next-line no-throw-literal
         throw `Wrong state: ${parsedUrl.state}`
       }
     }
@@ -81,6 +86,7 @@ class VueWechatAuthPlugin {
 
   get code () {
     if (this._code === null) {
+      // eslint-disable-next-line no-throw-literal
       throw 'Not get the code from wechat server!'
     }
     // console.log(this)
