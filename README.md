@@ -23,11 +23,11 @@
 
 5. 启动程序
 
-   npm run dev
+   npm run serve
 
 6. 打包
 
-   npm run build||npm run release
+   npm run build || npm run release
 
 7. 预览
 
