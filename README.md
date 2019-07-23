@@ -1,34 +1,61 @@
-# vue-wechat-login
+## vue-wechat-login
 
-> 微信公众号移动端授权登录例子[CSDN博客](https://blog.csdn.net/qq_35844177/article/details/79743812)
+移动端微信公众号授权登录示例，[CSDN博客](https://blog.csdn.net/qq_35844177/article/details/79743812)
 
-## 预览
+请提前阅读有关微信公众平台[相关文档](https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html)
 
-``` bash
-1. git clone
+### 目录
 
-   git clone https://github.com/wkl007/vue-wechat-login.git
+- [运行调试](#运行调试)
+- [运行效果图](#运行效果图)
 
-2. 安装依赖
+### 运行调试
 
-   cd vue-wechat-login && npm install
+#### 1. 克隆项目，终端进入项目根目录
 
-3. 修改环境变量中
+```javascript
+git clone https://github.com/wkl007/vue-wechat-login.git
+```
 
-   VUE_APP_WECHAT_APPID与VUE_APP_API_URL替换为自己的appid与地址
+#### 2. 安装项目依赖
 
-4. 修改api文件夹下
+```javascript
+yarn install || npm install
+```
 
-   接口地址更换
+#### 3. 修改项目环境变量中APP_URL与APP_ID
 
-5. 启动程序
+```
+VUE_APP_API_URL=YOUR API URL
+VUE_APP_WECHAT_APP_ID=YOUR APP ID
+```
 
-   npm run serve
+#### 4. 修改登录接口请求地址
 
-6. 打包
+```javascript
+static login (data) {
+    return request({
+      url: '/auth/wechat',// YOUR URL
+      method: 'post',
+      data
+    })
+}
+```
 
-   npm run build || npm run release
+#### 5. 本地运行
 
-7. 预览
+```javascript
+yarn serve || npm run serve
+```
 
-   打开微信开发者工具，输入线上网址查看
+#### 6. 打包
+
+```javascript
+yarn build:dev || npm run build:dev
+yarn build:pro || npm run build:pro
+```
+
+### 运行效果图
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190723171657695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1ODQ0MTc3,size_16,color_FFFFFF,t_70)
+
