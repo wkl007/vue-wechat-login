@@ -1,48 +1,100 @@
-import cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import storage from 'good-storage'
 
-const LoginStatusKey = 'Login-Status'// 登录态 0 1 2
-const TokenKey = 'Access-Token'// token
-const UserInfoKey = 'User-Info'// 用户信息 {} {...}
+export const LOGIN_STATUS = 'Login_Status'// 登录态 0 1 2 Number
+export const ACCESS_TOKEN = 'Access_Token'// accessToken String
+export const USER_INFO = 'User_Info'// 用户信息 {} Object
 
-export function loadLoginStatus () {
-  return cookies.get(LoginStatusKey) || 0
+/**
+ * 设置cookie
+ * @param key
+ * @param value
+ * @param options
+ * @returns {*}
+ */
+export function saveCookie (key, value, options) {
+  Cookies.set(key, value, options)
+  return value
 }
 
-export function saveLoginStatus (status) {
-  cookies.set(LoginStatusKey, status, {expires: 7})
-  return status
+/**
+ * 获取cookie
+ * @param key
+ * @param defaultValue
+ * @returns {*}
+ */
+export function loadCookie (key, defaultValue) {
+  return Cookies.get(key) || defaultValue
 }
 
-export function removeLoginStatus () {
-  cookies.remove(LoginStatusKey)
+/**
+ * 删除cookie
+ * @param key
+ * @returns {string}
+ */
+export function removeCookie (key) {
+  Cookies.remove(key)
   return ''
 }
 
-export function loadToken () {
-  return storage.get(TokenKey, '')
+/**
+ * 设置本地存储
+ * @param key
+ * @param value
+ * @returns {*}
+ */
+export function saveStorage (key, value) {
+  storage.set(key, value)
+  return value
 }
 
-export function saveToken (token) {
-  storage.set(TokenKey, token)
-  return token
+/**
+ * 获取本地存储
+ * @param key
+ * @param defaultValue
+ * @returns {*}
+ */
+export function loadStorage (key, defaultValue) {
+  return storage.get(key, defaultValue)
 }
 
-export function removeToken () {
-  storage.remove(TokenKey)
+/**
+ * 删除本地存储
+ * @param key
+ * @returns {string}
+ */
+export function removeStorage (key) {
+  storage.remove(key)
   return ''
 }
 
-export function loadUserInfo () {
-  return storage.get(UserInfoKey, {})
+/**
+ * 保存会话存储
+ * @param key
+ * @param value
+ * @returns {*}
+ */
+export function saveSessionStorage (key, value) {
+  storage.session.set(key, value)
+  return value
 }
 
-export function saveUserInfo (userInfo) {
-  storage.set(UserInfoKey, userInfo)
-  return userInfo
+/**
+ * 获取会话存储
+ * @param key
+ * @param defaultValue
+ * @returns {*}
+ */
+export function loadSessionStorage (key, defaultValue) {
+  return storage.session.get(key, defaultValue)
 }
 
-export function removeUserInfo () {
-  storage.remove(UserInfoKey)
-  return {}
+/**
+ * 删除会话存储
+ * @param key
+ * @returns {string}
+ */
+export function removeSessionStorage (key) {
+  storage.session.remove(key)
+  return ''
 }

@@ -3,31 +3,73 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "commit": "git-cz",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "release": "vue-cli-service build --mode release",
-    "lint": "vue-cli-service lint"
+    "build:dev": "vue-cli-service build --mode dev",
+    "build:pro": "vue-cli-service build --mode production",
+    "lint": "npm run lint:code && npm run lint:style",
+    "lint:code": "vue-cli-service lint",
+    "lint:style": "vue-cli-service lint:style"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "src/**/*.{vue,htm,html,css,sss,less,scss}": [
+      "vue-cli-service lint:style",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
-    "es6-promise": "^4.2.8",
+    "dayjs": "^1.8.15",
     "good-storage": "^1.1.0",
     "js-cookie": "^2.2.0",
+    "numeral": "^2.0.6",
+    "vant": "^2.0.9",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.6",
-    "vuex": "^3.1.1"
+    "vue-router": "^3.0.3",
+    "vue-wechat-title": "^2.0.5",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
+    "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-plugin-eslint": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.12.0",
+    "commitizen": "^4.0.3",
+    "compression-webpack-plugin": "^3.0.0",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.2",
-    "less": "^3.9.0",
-    "less-loader": "^5.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "husky": "^3.0.1",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "lint-staged": "^9.2.0",
+    "postcss-px-to-viewport": "^1.1.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^2.1.3",
     "vue-template-compiler": "^2.6.10"
   }
 }

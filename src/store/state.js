@@ -1,9 +1,9 @@
-import { loadLoginStatus, loadToken, loadUserInfo } from '../utils/cache'
+import { loadStorage, loadCookie, LOGIN_STATUS, ACCESS_TOKEN, USER_INFO } from '../utils/cache'
 
 const state = {
-  loginStatus: loadLoginStatus(), // 登录状态
-  token: loadToken(), // token
-  userInfo: loadUserInfo(), // 用户登录信息
+  loginStatus: Number(loadCookie(LOGIN_STATUS, 0)),
+  accessToken: loadStorage(ACCESS_TOKEN, ''),
+  userInfo: loadStorage(USER_INFO, {}),
 }
 
 export default state

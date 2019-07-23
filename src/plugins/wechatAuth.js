@@ -1,4 +1,4 @@
-const qs = require('qs')
+import qs from 'qs'
 // 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
 const SCOPES = ['snsapi_base', 'snsapi_userinfo']
 
@@ -49,30 +49,22 @@ class VueWechatAuthPlugin {
   }
 
   get authUrl () {
-    if (this.appid === null) {
-      // eslint-disable-next-line no-throw-literal
-      throw 'appid must not be null'
-    }
-    if (this.redirect_uri === null) {
-      // eslint-disable-next-line no-throw-literal
-      throw 'redirect uri must not be null'
-    }
+    // eslint-disable-next-line no-throw-literal
+    if (this.appid === null) throw 'appid must not be null'
+    // eslint-disable-next-line no-throw-literal
+    if (this.redirect_uri === null) throw 'redirect uri must not be null'
     this.state = VueWechatAuthPlugin.makeState()
     return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirect_uri}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
   }
 
-  // eslint-disable-next-line camelcase
   returnFromWechat (redirect_uri) {
     let parsedUrl = qs.parse(redirect_uri.split('?')[1])
     if (process.env.NODE_ENV === 'development') {
-      // console.log('parsedUrl: ', parsedUrl)
       this.state = null
       this._code = parsedUrl.code
     } else {
-      if (this.state === null) {
-        // eslint-disable-next-line no-throw-literal
-        throw 'You did\'t set state'
-      }
+      // eslint-disable-next-line no-throw-literal
+      if (this.state === null) throw 'You did\'t set state'
       if (parsedUrl.state === this.state) {
         this.state = null
         this._code = parsedUrl.code
@@ -85,15 +77,10 @@ class VueWechatAuthPlugin {
   }
 
   get code () {
-    if (this._code === null) {
-      // eslint-disable-next-line no-throw-literal
-      throw 'Not get the code from wechat server!'
-    }
-    // console.log(this)
-    // console.log('this._code: ' + this._code)
+    // eslint-disable-next-line no-throw-literal
+    if (this._code === null) throw 'Not get the code from wechat server!'
     let code = this._code
     this._code = null
-    // console.log('code: ' + code)
     return code
   }
 }
