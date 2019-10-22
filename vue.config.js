@@ -69,7 +69,7 @@ module.exports = {
   // css相关配置
   css: {
     // 启用 CSS modules
-    modules: false,
+    requireModuleExtension: true,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
