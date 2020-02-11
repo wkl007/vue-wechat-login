@@ -21,12 +21,12 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
-  export default {
-    name: 'home',
-    computed: {
-      ...mapGetters(['userInfo', 'accessToken', 'loginStatus']),
-    },
-  }
+export default {
+  name: 'home',
+  computed: {
+    ...mapGetters(['userInfo', 'accessToken', 'loginStatus']),
+  },
+}
 </script>

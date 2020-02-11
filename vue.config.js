@@ -1,10 +1,9 @@
 const path = require('path')
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')// 去console插件
+const TerserPlugin = require('terser-webpack-plugin')// 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
-function resolve (dir) {
-  return path.join(__dirname, dir)
-}
+
+const resolve = dir => path.join(__dirname, dir)
 
 module.exports = {
   // 基本路径
@@ -34,8 +33,8 @@ module.exports = {
   // webpack配置
   configureWebpack: config => {
     const plugins = [
-      new UglifyJsPlugin({
-        uglifyOptions: {
+      new TerserPlugin({
+        terserOptions: {
           warnings: false,
           compress: {
             inline: false, // 解决vConsole打包报错问题

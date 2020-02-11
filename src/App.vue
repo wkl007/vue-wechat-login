@@ -8,10 +8,10 @@
 </template>
 
 <style lang="less">
-  @import "./assets/styles/variables";
+@import "./assets/styles/variables";
 
-  #app {
-    color: @color-text;
-    font-size: @font-size-normal;
-  }
+#app {
+  color: @color-text;
+  font-size: @font-size-normal;
+}
 </style>

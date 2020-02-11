@@ -12,7 +12,7 @@ class VueWechatAuthPlugin {
   }
 
   install (Vue, options) {
-    let wechatAuth = this
+    const wechatAuth = this
     this.setAppId(options.appid)
     Vue.mixin({
       created: function () {
@@ -58,7 +58,7 @@ class VueWechatAuthPlugin {
   }
 
   returnFromWechat (redirect_uri) {
-    let parsedUrl = qs.parse(redirect_uri.split('?')[1])
+    const parsedUrl = qs.parse(redirect_uri.split('?')[1])
     if (process.env.NODE_ENV === 'development') {
       this.state = null
       this._code = parsedUrl.code
@@ -79,7 +79,7 @@ class VueWechatAuthPlugin {
   get code () {
     // eslint-disable-next-line no-throw-literal
     if (this._code === null) throw 'Not get the code from wechat server!'
-    let code = this._code
+    const code = this._code
     this._code = null
     return code
   }
