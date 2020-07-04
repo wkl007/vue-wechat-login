@@ -74,12 +74,14 @@ module.exports = {
     // css预设器配置项
     loaderOptions: {
       less: {
-        modifyVars: {
-          red: '#f74042',
-          blue: '#4a90e2',
-          orange: '#ff9603',
-          'text-color': '#373737',
-          'border-color': '#e4e4e4'
+        lessOptions: {
+          modifyVars: {
+            red: '#f74042',
+            blue: '#4a90e2',
+            orange: '#ff9603',
+            'text-color': '#373737',
+            'border-color': '#e4e4e4'
+          }
         }
       }
     },
