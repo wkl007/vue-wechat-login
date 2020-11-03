@@ -32,30 +32,32 @@ module.exports = {
   integrity: false,
   // webpack配置
   configureWebpack: config => {
+    // config.name = name
     const plugins = [
+      // 去console
       new TerserPlugin({
         terserOptions: {
           warnings: false,
           compress: {
-            inline: false, // 解决vConsole打包报错问题
             drop_debugger: true,
-            drop_console: true,
-          },
+            drop_console: true
+          }
         },
         sourceMap: false,
-        parallel: true,
+        parallel: true
       }),
+      // gzip压缩
       new CompressionWebpackPlugin({
         filename: '[path].gz[query]',
         algorithm: 'gzip',
         test: new RegExp(
           '\\.(' +
           ['js', 'css'].join('|') +
-          ')$',
+          ')$'
         ),
         threshold: 10240,
-        minRatio: 0.8,
-      }),
+        minRatio: 0.8
+      })
     ]
     if (process.env.NODE_ENV === 'production') {
       config.plugins = [...config.plugins, ...plugins]
@@ -76,22 +78,19 @@ module.exports = {
       less: {
         lessOptions: {
           modifyVars: {
-            red: '#f74042',
-            blue: '#4a90e2',
-            orange: '#ff9603',
-            'text-color': '#373737',
-            'border-color': '#e4e4e4'
-          }
+            // 'primary-color': '#1DA57A'
+          },
+          javascriptEnabled: true
         }
       }
-    },
+    }
   },
   // webpack-dev-server配置
   devServer: {
     open: true, // 打开浏览器
     overlay: {
-      warnings: true,
-      errors: true
+      warnings: false,
+      errors: false
     },
     host: '0.0.0.0',
     port: 8080,

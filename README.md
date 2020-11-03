@@ -1,5 +1,7 @@
 ## vue-wechat-login
 
+此项目分为vue3.0版本-master分支与vue2.0版本-vue_2.0分支，可以查看对应分支代码。
+
 移动端微信公众号授权登录示例，[CSDN博客](https://blog.csdn.net/qq_35844177/article/details/79743812)
 
 请提前阅读有关微信公众平台[相关文档](https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html)

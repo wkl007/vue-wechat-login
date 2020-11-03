@@ -1,17 +1,26 @@
 <template>
-  <div id="app">
-    <keep-alive>
-      <router-view v-wechat-title="$route.meta.title" v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive>
-    <router-view v-wechat-title="$route.meta.title" v-if="!$route.meta.keepAlive"></router-view>
+  <div id="nav">
+    <router-link to="/">Home</router-link>
+    |
+    <router-link to="/about">About</router-link>
   </div>
+  <router-view/>
 </template>
 
-<style lang="less">
-@import "./assets/styles/variables";
+<script lang="ts">
+import { defineComponent } from 'vue'
 
+export default defineComponent({
+  name: 'App'
+})
+</script>
+
+<style lang="less">
 #app {
-  color: @color-text;
-  font-size: @font-size-normal;
+  color: #2c3e50;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 </style>
