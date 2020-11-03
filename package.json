@@ -79,6 +79,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",
     "terser-webpack-plugin": "^4.2.3",
+    "ts-import-plugin": "^1.6.6",
     "typescript": "~4.0.5"
   }
 }
