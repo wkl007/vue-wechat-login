@@ -7,6 +7,13 @@
         content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style">
+  <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
+  <% } %>
+  <% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
+  <link href="<%= htmlWebpackPlugin.options.cdn.js[i] %>" rel="preload" as="script">
+  <% } %>
 </head>
 <body>
 <noscript>
@@ -15,5 +22,8 @@
 </noscript>
 <div id="app"></div>
 <!-- built files will be auto injected -->
+<% for (var i in htmlWebpackPlugin.options.cdn&&htmlWebpackPlugin.options.cdn.js) { %>
+<script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+<% } %>
 </body>
 </html>

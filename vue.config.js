@@ -50,7 +50,7 @@ module.exports = {
       }),
       // gzip压缩
       new CompressionWebpackPlugin({
-        filename: '[path].gz[query]',
+        filename: '[path][base].gz',
         algorithm: 'gzip',
         test: new RegExp(
           '\\.(' +
@@ -68,6 +68,7 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
+
     config.module
       .rule('ts')
       .use('ts-loader')
@@ -89,6 +90,42 @@ module.exports = {
         })
         return options
       })
+
+    // externals配置
+    const externals = {
+      axios: 'axios'
+    }
+    config.externals(externals)
+    // cdn配置
+    const cdnUrl = 'https://cdn.jsdelivr.net/npm/'
+    const cdn = {
+      // 开发环境
+      dev: {
+        css: [],
+        js: [
+          // axios
+          `${cdnUrl}axios@0.21.0/dist/axios.js`
+        ]
+      },
+      // 生产环境
+      build: {
+        css: [],
+        js: [
+          // axios
+          `${cdnUrl}axios@0.21.0/dist/axios.min.js`
+        ]
+      }
+    }
+
+    config.plugin('html').tap(args => {
+      if (process.env.NODE_ENV === 'production') {
+        args[0].cdn = cdn.build
+      }
+      if (process.env.NODE_ENV === 'development') {
+        args[0].cdn = cdn.dev
+      }
+      return args
+    })
   },
   // css相关配置
   css: {

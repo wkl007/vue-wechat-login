@@ -10503,10 +10503,10 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-router@^4.0.0-0:
-  version "4.0.0-rc.1"
-  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-4.0.0-rc.1.tgz#42f41315849163a1243886c9aa6d7c14f24fd003"
-  integrity sha1-QvQTFYSRY6EkOIbJqm18FPJP0AM=
+vue-router@^4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-4.0.0-rc.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-4.0.0-rc.2.tgz#8545cab76a05ca4f6dffbe6c6a671a4dbf585ab2"
+  integrity sha1-hUXKt2oFyk9t/75samcaTb9YWrI=
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
@@ -10521,12 +10521,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue-wechat-title@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.npm.taobao.org/vue-wechat-title/download/vue-wechat-title-2.0.7.tgz?cache=0&sync_timestamp=1594175868653&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-wechat-title%2Fdownload%2Fvue-wechat-title-2.0.7.tgz#6ad4ca49fb2e7bcd0f1eed0a5fdcbe9461b2946b"
-  integrity sha1-atTKSfsue80PHu0KX9y+lGGylGs=
-
-vue@^3.0.0:
+vue@^3.0.2:
   version "3.0.2"
   resolved "https://registry.npm.taobao.org/vue/download/vue-3.0.2.tgz#9d5b7b2983f35e64a34d13c7c9d6831239feca3c"
   integrity sha1-nVt7KYPzXmSjTRPHydaDEjn+yjw=
@@ -10535,7 +10530,7 @@ vue@^3.0.0:
     "@vue/runtime-dom" "3.0.2"
     "@vue/shared" "3.0.2"
 
-vuex@^4.0.0-0:
+vuex@^4.0.0-rc.1:
   version "4.0.0-rc.1"
   resolved "https://registry.npm.taobao.org/vuex/download/vuex-4.0.0-rc.1.tgz?cache=0&sync_timestamp=1604065438225&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuex%2Fdownload%2Fvuex-4.0.0-rc.1.tgz#160cd5957972a61c7c01ab585995b78e092a298d"
   integrity sha1-FgzVlXlyphx8AatYWZW3jgkqKY0=
