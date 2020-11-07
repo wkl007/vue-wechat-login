@@ -126,8 +126,8 @@ module.exports = {
     proxy: null, // 设置代理
     before: app => {}
   },
-  // enabled by default if the machine has more than 1 cores
-  parallel: require('os').cpus().length > 1,
+  // 使用ts-import-plugin parallel设置为false，原因参考https://www.jianshu.com/p/201ed7363a56
+  parallel: false,
   pwa: {},
   // 第三方插件选项
   pluginOptions: {
