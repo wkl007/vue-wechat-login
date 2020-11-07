@@ -5,7 +5,7 @@
   "scripts": {
     "commit": "git-cz",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --report",
     "lint": "npm run lint:code && npm run lint:style",
     "lint:code": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style"
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "dayjs": "^1.9.4",
+    "dayjs": "^1.9.5",
     "good-storage": "^1.1.1",
     "js-cookie": "^2.2.1",
     "numeral": "^2.0.6",
@@ -64,7 +64,7 @@
     "commitizen": "^4.2.1",
     "compression-webpack-plugin": "^6.0.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -74,6 +74,7 @@
     "less": "^3.0.4",
     "less-loader": "^7.0.2",
     "lint-staged": "^10.5.1",
+    "postcss-px-to-viewport": "^1.1.1",
     "stylelint": "^13.7.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",

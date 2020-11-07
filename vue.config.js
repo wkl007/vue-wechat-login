@@ -1,7 +1,9 @@
+const merge = require('webpack-merge')
 const path = require('path')
 
-const TerserPlugin = require('terser-webpack-plugin')// 去console插件
-const CompressionWebpackPlugin = require('compression-webpack-plugin')// gzip压缩插件
+const tsImportPluginFactory = require('ts-import-plugin') // 按需加载插件
+const TerserPlugin = require('terser-webpack-plugin') // 去console插件
+const CompressionWebpackPlugin = require('compression-webpack-plugin') // gzip压缩插件
 
 const resolve = dir => path.join(__dirname, dir)
 
@@ -66,6 +68,27 @@ module.exports = {
   chainWebpack: config => {
     config.resolve.alias
       .set('@', resolve('src'))
+    config.module
+      .rule('ts')
+      .use('ts-loader')
+      .tap(options => {
+        options = merge(options, {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: 'vant',
+                libraryDirectory: 'es',
+                style: (name) => `${name}/style/less`
+              })
+            ]
+          }),
+          compilerOptions: {
+            module: 'es2015'
+          }
+        })
+        return options
+      })
   },
   // css相关配置
   css: {
@@ -78,7 +101,11 @@ module.exports = {
       less: {
         lessOptions: {
           modifyVars: {
-            // 'primary-color': '#1DA57A'
+            red: '#f74042',
+            blue: '#4a90e2',
+            orange: '#ff9603',
+            'text-color': '#373737',
+            'border-color': '#e4e4e4'
           },
           javascriptEnabled: true
         }
