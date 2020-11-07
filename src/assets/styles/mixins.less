@@ -1,0 +1,169 @@
+@import "./variables";
+
+// 单行文本超出显示省略号
+.text-overflow-hidden {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行文本超出显示省略号
+.more-line-nowrap(@num) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @num;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+// 清除浮动
+.clear-fix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+// iphoneX适配
+.safe-area-inset-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-no-inset-bottom {
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
+// 1像素边框处理
+.border-top-1px,
+.border-right-1px,
+.border-bottom-1px,
+.border-left-1px,
+.border-surround {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    transform-origin: 0 0;
+    content: '';
+  }
+}
+
+.border-top-1px(@color:@color-border) {
+  &::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+  }
+}
+
+.border-bottom-1px(@color:@color-border) {
+  &::after {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid @color;
+  }
+}
+
+.border-right-1px(@color:@color-border) {
+  &::after {
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-right: 1px solid @color;
+  }
+}
+
+.border-left-1px(@color:@color-border) {
+  &::before {
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-left: 1px solid @color;
+  }
+}
+
+.border-surround(@color) {
+  &::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid @color;
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  .border-top-1px {
+    &::before {
+      transform: scaleY(0.5);
+    }
+  }
+
+  .border-bottom-1px {
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+
+  .border-left-1px {
+    &::before {
+      transform: scaleX(0.5);
+    }
+  }
+
+  .border-right-1px {
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+
+  .border-surround {
+    &::before {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+    }
+  }
+}
+
+@media (min-resolution: 3dppx) {
+  .border-top-1px {
+    &::before {
+      transform: scaleY(0.333);
+    }
+  }
+
+  .border-bottom-1px {
+    &::after {
+      transform: scaleY(0.333);
+    }
+  }
+
+  .border-left-1px {
+    &::before {
+      transform: scaleX(0.333);
+    }
+  }
+
+  .border-right-1px {
+    &::after {
+      transform: scaleX(0.333);
+    }
+  }
+
+  .border-surround {
+    &::before {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.333);
+    }
+  }
+}

@@ -2,16 +2,14 @@ import qs from 'qs'
 // 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
 const SCOPES: Array<string> = ['snsapi_base', 'snsapi_userinfo']
 
-class VueWechatAuthPlugin {
+class VueWechatAuth {
   private appid: string
-  private redirectUrl: string
   private scope: string
   private _code: string
   private _redirectUrl: string
 
   constructor () {
     this.appid = ''
-    this.redirectUrl = ''
     this.scope = SCOPES[1]
     this._code = ''
     this._redirectUrl = ''
@@ -40,7 +38,7 @@ class VueWechatAuthPlugin {
   }
 
   get redirectUri () {
-    return this.redirectUrl
+    return this._redirectUrl
   }
 
   set state (state: string) {
@@ -55,9 +53,9 @@ class VueWechatAuthPlugin {
     // eslint-disable-next-line no-throw-literal
     if (!this.appid) throw 'appid must not be empty'
     // eslint-disable-next-line no-throw-literal
-    if (!this.redirectUrl) throw 'redirect uri must not be empty'
-    this.state = VueWechatAuthPlugin.makeState()
-    return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirectUrl}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
+    if (!this.redirectUri) throw 'redirect uri must not be empty'
+    this.state = VueWechatAuth.makeState()
+    return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${this.appid}&redirect_uri=${this.redirectUri}&response_type=code&scope=${this.scope}&state=${this.state}#wechat_redirect`
   }
 
   get code () {
@@ -76,21 +74,21 @@ class VueWechatAuthPlugin {
     } else {
       // eslint-disable-next-line no-throw-literal
       if (!this.state) throw 'You did\'t set state'
-      this.state = ''
       if (parseUrl.state === this.state) {
         this._code = String(parseUrl.code)
       } else {
         // eslint-disable-next-line no-throw-literal,no-template-curly-in-string
-        throw 'wrong state: ${parsedUrl.state}'
+        throw `Wrong state: ${parseUrl.state}`
       }
+      this.state = ''
     }
   }
 }
 
-const vueWechatAuthPlugin = new VueWechatAuthPlugin()
+const vueWechatAuth = new VueWechatAuth()
 
 /* if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(VueWechatAuthPlugin)
 } */
 
-export default vueWechatAuthPlugin
+export default vueWechatAuth

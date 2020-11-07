@@ -14,11 +14,10 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import "./assets/styles/variables";
+
 #app {
-  color: #2c3e50;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: @color-text;
+  font-size: @font-size-normal;
 }
 </style>

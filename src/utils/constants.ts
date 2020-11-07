@@ -1,6 +1,8 @@
-const { VUE_APP_API_URL, VUE_APP_WECHAT_APP_ID } = process.env
+const { VUE_APP_API_URL, VUE_APP_WECHAT_APP_ID, VUE_APP_WEB_URL } = process.env
 
 export const NODE_ENV: string = process.env.NODE_ENV // 环境变量
+
+export const WEB_URL: string = VUE_APP_WEB_URL // 网页url
 
 export const API_URL: string = VUE_APP_API_URL // 接口url
 
