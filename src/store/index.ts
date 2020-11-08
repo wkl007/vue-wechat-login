@@ -17,6 +17,10 @@ const store = createStore({
   plugins: debug ? [createLogger()] : []
 })
 
+/**
+ * vuex 配置
+ * @param app
+ */
 export function setupStore (app: App<Element>): void {
   app.use(store)
 }
