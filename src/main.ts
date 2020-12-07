@@ -4,7 +4,7 @@ import { setupRouter } from '@/router'
 import { setupStore } from '@/store'
 import { setupVant } from '@/configs/vant'
 import { setupWechatAuth } from '@/configs/wechatAuth'
-import '@/configs/interceptor'
+// import '@/configs/interceptor'
 // import '@/configs/registerServiceWorker'
 
 const app = createApp(App)
