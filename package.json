@@ -31,13 +31,13 @@
     }
   },
   "dependencies": {
-    "axios": "^0.21.0",
-    "dayjs": "^1.9.7",
+    "axios": "^0.21.1",
+    "dayjs": "^1.9.8",
     "good-storage": "^1.1.1",
     "js-cookie": "^2.2.1",
     "numeral": "^2.0.6",
-    "register-service-worker": "^1.7.1",
-    "vant": "^3.0.0-rc.2",
+    "register-service-worker": "^1.7.2",
+    "vant": "^3.0.0",
     "vue": "^3.0.4",
     "vue-router": "^4.0.1",
     "vuex": "^4.0.0-rc.2"
@@ -49,8 +49,8 @@
     "@types/good-storage": "^1.1.0",
     "@types/js-cookie": "^2.2.6",
     "@types/numeral": "^0.0.28",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
     "@vue/cli-plugin-eslint": "~4.5.9",
     "@vue/cli-plugin-pwa": "~4.5.9",
     "@vue/cli-plugin-router": "~4.5.9",
@@ -65,16 +65,16 @@
     "commitizen": "^4.2.1",
     "compression-webpack-plugin": "^6.0.2",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.16.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^7.2.0",
-    "husky": "^4.3.5",
+    "eslint-plugin-vue": "^7.3.0",
+    "husky": "^4.3.6",
     "inquirer": "^7.3.3",
     "less": "^3.0.4",
-    "less-loader": "^7.1.0",
+    "less-loader": "^7.2.0",
     "lint-staged": "^10.5.3",
     "node-ssh": "^11.1.1",
     "postcss-px-to-viewport": "^1.1.1",
@@ -84,6 +84,6 @@
     "stylelint-order": "^4.1.0",
     "terser-webpack-plugin": "^4.2.3",
     "ts-import-plugin": "^1.6.7",
-    "typescript": "~4.1.2"
+    "typescript": "~4.1.3"
   }
 }
