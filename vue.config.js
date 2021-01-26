@@ -161,7 +161,12 @@ module.exports = {
   },
   // 使用ts-import-plugin parallel设置为false，原因参考https://www.jianshu.com/p/201ed7363a56
   parallel: false,
-  pwa: {},
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true
+    }
+  },
   // 第三方插件选项
   pluginOptions: {
     lintStyleOnBuild: true,
