@@ -9,13 +9,8 @@
     "lint": "npm run lint:code && npm run lint:style",
     "lint:code": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
-    "deploy:pro": "npm run build && node ./deploy/index.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "deploy:pro": "npm run build && node ./deploy/index.js",
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx,vue}": [
