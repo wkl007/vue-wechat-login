@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png"/>
-  <van-button>
-    vuex测试
-  </van-button>
+  <keep-alive>
+    <router-view v-if="$route.meta.keepAlive"/>
+  </keep-alive>
+  <router-view v-if="!$route.meta.keepAlive"/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'App',
-  setup () {
-    console.log(import.meta.env)
-  }
+  name: 'App'
 })
 </script>
+
+<style lang="less">
+@import "./assets/styles/variables";
+
+#app {
+  color: @color-text;
+  font-size: @font-size-normal;
+}
+</style>

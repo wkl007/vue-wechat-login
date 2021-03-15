@@ -7,7 +7,7 @@ import viteCompression from 'vite-plugin-compression'
 
 const path = require('path')
 
-const resolve = dir => path.join(__dirname, dir)
+const resolve = (dir: string) => path.join(__dirname, dir)
 
 export default defineConfig({
   // 项目根目录
@@ -55,13 +55,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         lessOptions: {
-          modifyVars: {
-            red: '#f74042',
-            blue: '#4a90e2',
-            orange: '#ff9603',
-            'text-color': '#373737',
-            'border-color': '#e4e4e4'
-          },
+          modifyVars: {},
           javascriptEnabled: true
         }
       }
@@ -96,5 +90,11 @@ export default defineConfig({
         drop_debugger: true
       }
     }
+  },
+  // 依赖优化配置
+  optimizeDeps: {
+    include: [
+      'vant'
+    ]
   }
 })

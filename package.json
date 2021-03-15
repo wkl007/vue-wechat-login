@@ -25,12 +25,23 @@
     }
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
+    "good-storage": "^1.1.1",
+    "js-cookie": "^2.2.1",
+    "numeral": "^2.0.6",
     "vant": "^3.0.9",
-    "vue": "^3.0.5"
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.5",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
+    "@types/good-storage": "^1.1.0",
+    "@types/js-cookie": "^2.2.6",
+    "@types/numeral": "^2.0.1",
+    "@types/qs": "^6.9.6",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "@vitejs/plugin-vue": "^1.1.5",
@@ -49,6 +60,7 @@
     "less": "^4.1.1",
     "lint-staged": "^10.5.4",
     "postcss-px-to-viewport": "^1.1.1",
+    "qs": "^6.9.6",
     "stylelint": "^13.12.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^21.0.0",
