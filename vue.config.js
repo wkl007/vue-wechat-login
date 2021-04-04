@@ -55,6 +55,14 @@ module.exports = {
         ),
         threshold: 10240,
         minRatio: 0.8
+      }),
+      // brotli压缩
+      new CompressionWebpackPlugin({
+        filename: '[path][base].br',
+        algorithm: 'brotliCompress',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8
       })
     ]
     if (process.env.NODE_ENV === 'production') {
