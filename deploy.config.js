@@ -1,28 +1,17 @@
-/*
-  deploy.config.js说明：
-  ssh: 连接服务器用户信息
-  targetDir: 需要压缩的文件目录（启用本地压缩后生效）
-  openCompress: 关闭后，将跳过本地文件压缩，直接上传同级目录下指定文件
-  openBackUp: 开启后，若远端存在相同目录，则会修改原始目录名称，不会直接覆盖
-  deployDir: 指定远端部署地址
-  releaseDir: 指定远端部署地址下的发布目录名称
-*/
-
-const config = [
-  {
-    name: '微信授权登录测试',
-    ssh: {
-      host: '192.198.1.1',
-      port: 22,
-      username: 'admin',
-      password: 'password'
-    },
-    targetDir: './dist',
-    openCompress: true,
-    openBackUp: true,
-    deployDir: '/home/vue-wechat-login/',
-    releaseDir: 'dist'
+module.exports = {
+  projectName: 'vue-wechat-login', // 项目名称
+  cluster: [], // 集群部署配置，要同时部署多台配置此属性如: ['dev', 'test', 'prod']
+  pro: {
+    name: '生产环境', // 环境名称
+    script: 'npm run build', // 打包命令
+    host: '192.168.1.1', // 服务器地址
+    port: 22, // 服务器端口
+    username: 'admin', // 服务器登录用户名
+    password: 'password', // 服务器登录密码
+    distPath: 'dist', // 本地打包生成目录
+    webDir: '/home/vue-wechat-login/dist', // 服务器部署路径
+    bakDir: '/home/vue-wechat-login/backups', // 服务器备份路径
+    isRemoveRemoteFile: false, // 是否删除远程文件
+    isRemoveLocalFile: true // 是否删除本地文件
   }
-]
-
-module.exports = config
+}
