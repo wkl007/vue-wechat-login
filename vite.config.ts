@@ -40,6 +40,13 @@ export default defineConfig({
       threshold: 10240,
       algorithm: 'gzip',
       ext: '.gz'
+    }),
+    viteCompression({
+      verbose: true,
+      disable: false,
+      threshold: 10240,
+      algorithm: 'brotliCompress',
+      ext: '.br'
     })
   ],
   // 静态资源服务的文件夹
