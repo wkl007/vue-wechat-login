@@ -1,3 +1,4 @@
+const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
 const { merge } = require('webpack-merge')
 
@@ -7,7 +8,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin') // gzip�
 
 const resolve = dir => path.join(__dirname, dir)
 
-module.exports = {
+module.exports = defineConfig({
   // 基本路径
   publicPath: '/',
   // 输出文件目录
@@ -153,17 +154,18 @@ module.exports = {
   },
   // webpack-dev-server配置
   devServer: {
-    open: true, // 打开浏览器
-    overlay: {
-      warnings: false,
-      errors: false
+    open: false, // 打开浏览器
+    client: {
+      overlay: {
+        warnings: false,
+        errors: false
+      }
     },
     host: '0.0.0.0',
     port: 8080,
     https: false,
-    hotOnly: false,
     proxy: null, // 设置代理
-    before: app => {}
+    onBeforeSetupMiddleware: ({ app }) => {}
   },
   // 使用ts-import-plugin parallel设置为false，原因参考https://www.jianshu.com/p/201ed7363a56
   parallel: false,
@@ -185,4 +187,4 @@ module.exports = {
           () => {}
       }
   }
-}
+})

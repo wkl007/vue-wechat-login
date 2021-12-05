@@ -11,7 +11,9 @@ const service = axios.create({
 // http请求拦截器
 service.interceptors.request.use(config => {
   const { accessToken } = store.getters
-  if (accessToken) config.headers.Authorization = `JWT  ${accessToken}`
+  if (accessToken) { // @ts-ignore
+    config.headers.Authorization = `JWT  ${accessToken}`
+  }
   return config
 }, err => {
   return Promise.reject(err)
