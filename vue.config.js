@@ -164,8 +164,7 @@ module.exports = defineConfig({
     host: '0.0.0.0',
     port: 8080,
     https: false,
-    proxy: null, // 设置代理
-    onBeforeSetupMiddleware: ({ app }) => {}
+    proxy: null // 设置代理
   },
   // 使用ts-import-plugin parallel设置为false，原因参考https://www.jianshu.com/p/201ed7363a56
   parallel: false,
