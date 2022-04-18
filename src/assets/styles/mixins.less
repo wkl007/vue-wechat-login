@@ -9,7 +9,7 @@
 
 // 多行文本超出显示省略号
 .more-line-nowrap(@num) {
-  display: -webkit-box;
+  display: box;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: @num;
@@ -22,18 +22,18 @@
   &::after {
     display: table;
     clear: both;
-    content: '';
+    content: "";
   }
 }
 
 // iphoneX适配
 .safe-area-inset-bottom {
-  padding-bottom: constant(safe-area-inset-bottom);
+  //padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .safe-area-no-inset-bottom {
-  margin-bottom: constant(safe-area-inset-bottom);
+  //margin-bottom: constant(safe-area-inset-bottom);
   margin-bottom: env(safe-area-inset-bottom);
 }
 
@@ -50,7 +50,7 @@
     position: absolute;
     display: block;
     transform-origin: 0 0;
-    content: '';
+    content: "";
   }
 }
 

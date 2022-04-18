@@ -2,8 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
-import styleImport from 'vite-plugin-style-import'
+import { createStyleImportPlugin, VantResolve } from 'vite-plugin-style-import'
 import viteCompression from 'vite-plugin-compression'
+import eslintPlugin from 'vite-plugin-eslint'
+import stylelintPlugin from 'vite-plugin-stylelint'
 
 const path = require('path')
 
@@ -25,14 +27,8 @@ export default defineConfig({
         clientsClaim: true
       }
     }),
-    styleImport({
-      libs: [
-        {
-          libraryName: 'vant',
-          esModule: true,
-          resolveStyle: name => `vant/es/${name}/style/index`
-        }
-      ]
+    createStyleImportPlugin({
+      resolves: [VantResolve()]
     }),
     viteCompression({
       verbose: true,
@@ -47,7 +43,9 @@ export default defineConfig({
       threshold: 10240,
       algorithm: 'brotliCompress',
       ext: '.br'
-    })
+    }),
+    eslintPlugin({ fix: true }),
+    stylelintPlugin({ fix: true })
   ],
   // 静态资源服务的文件夹
   publicDir: 'public',
@@ -90,6 +88,8 @@ export default defineConfig({
     cssCodeSplit: true,
     // 构建后是否生成 source map 文件
     sourcemap: false,
+    // 指定使用哪种混淆器
+    minify: 'terser',
     // 传递给 Terser 的 minify 选项
     terserOptions: {
       compress: {
