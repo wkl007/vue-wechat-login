@@ -2,21 +2,17 @@ module.exports = {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-rational-order',
-    'stylelint-config-recommended-less',
+    'stylelint-config-html',
     'stylelint-config-recommended-vue'
-  ],
-  plugins: [
-    'stylelint-order'
   ],
   overrides: [
     {
       files: ['**/*.less'],
       customSyntax: 'postcss-less',
-    },
-    {
-      files: ['**/*.vue'],
-      customSyntax: 'postcss-html',
-    },
+    }
+  ],
+  plugins: [
+    'stylelint-order'
   ],
   rules: {
     'selector-pseudo-class-no-unknown': null,
