@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import "./assets/styles/variables";
+@import url("./assets/styles/variables");
 
 #app {
   color: @color-text;

@@ -1,8 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
-const { merge } = require('webpack-merge')
+const { VantResolver } = require('unplugin-vue-components/resolvers')
+const ComponentsPlugin = require('unplugin-vue-components/webpack')
 
-const tsImportPluginFactory = require('ts-import-plugin') // 按需加载插件
 const TerserPlugin = require('terser-webpack-plugin') // 去console插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin') // gzip压缩插件
 
@@ -35,6 +35,13 @@ module.exports = defineConfig({
   integrity: false,
   // webpack配置
   configureWebpack: config => {
+    config.plugins = [
+      ...config.plugins,
+      // 按需引入组件样式
+      ComponentsPlugin({
+        resolvers: [VantResolver()]
+      })
+    ]
     // config.name = name
     const plugins = [
       // 去console
@@ -74,28 +81,6 @@ module.exports = defineConfig({
     config.resolve.alias
       .set('@', resolve('src'))
 
-    config.module
-      .rule('ts')
-      .use('ts-loader')
-      .tap(options => {
-        options = merge(options, {
-          transpileOnly: true,
-          getCustomTransformers: () => ({
-            before: [
-              tsImportPluginFactory({
-                libraryName: 'vant',
-                libraryDirectory: 'es',
-                style: (name) => `${name}/style/less`
-              })
-            ]
-          }),
-          compilerOptions: {
-            module: 'es2015'
-          }
-        })
-        return options
-      })
-
     // externals配置
     const externals = {
       axios: 'axios'
@@ -109,7 +94,7 @@ module.exports = defineConfig({
         css: [],
         js: [
           // axios
-          `${cdnUrl}axios@0.21.0/dist/axios.js`
+          `${cdnUrl}axios@1.2.1/dist/axios.js`
         ]
       },
       // 生产环境
@@ -117,7 +102,7 @@ module.exports = defineConfig({
         css: [],
         js: [
           // axios
-          `${cdnUrl}axios@0.21.0/dist/axios.min.js`
+          `${cdnUrl}axios@1.2.1/dist/axios.min.js`
         ]
       }
     }
@@ -140,13 +125,7 @@ module.exports = defineConfig({
     loaderOptions: {
       less: {
         lessOptions: {
-          modifyVars: {
-            red: '#f74042',
-            blue: '#4a90e2',
-            orange: '#ff9603',
-            'text-color': '#373737',
-            'border-color': '#e4e4e4'
-          },
+          modifyVars: {},
           javascriptEnabled: true
         }
       }

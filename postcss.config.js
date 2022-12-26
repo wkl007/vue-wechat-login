@@ -1,5 +1,5 @@
 const autoprefixer = require('autoprefixer')
-const pxtoviewport = require('postcss-px-to-viewport')
+const pxtoviewport = require('postcss-px-to-viewport-8-plugin')
 
 module.exports = {
   plugins: [
