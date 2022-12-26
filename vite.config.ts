@@ -2,8 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
-import { createStyleImportPlugin, VantResolve } from 'vite-plugin-style-import'
 import viteCompression from 'vite-plugin-compression'
+import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from 'unplugin-vue-components/resolvers'
+
 import eslintPlugin from 'vite-plugin-eslint'
 import stylelintPlugin from 'vite-plugin-stylelint'
 
@@ -20,15 +22,15 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    Components({
+      resolvers: [VantResolver()]
+    }),
     VitePWA({
       manifest: {},
       workbox: {
         skipWaiting: true,
         clientsClaim: true
       }
-    }),
-    createStyleImportPlugin({
-      resolves: [VantResolve()]
     }),
     viteCompression({
       verbose: true,
@@ -43,9 +45,7 @@ export default defineConfig({
       threshold: 10240,
       algorithm: 'brotliCompress',
       ext: '.br'
-    }),
-    eslintPlugin({ fix: true }),
-    stylelintPlugin({ fix: true })
+    })
   ],
   // 静态资源服务的文件夹
   publicDir: 'public',
@@ -68,10 +68,8 @@ export default defineConfig({
   },
   // 开发服务配置
   server: {
-    host: '0.0.0.0',
-    port: 3000,
+    host: true,
     open: true,
-    https: false,
     proxy: {}
   },
   // 打包服务配置
@@ -87,21 +85,6 @@ export default defineConfig({
     // 启用/禁用 CSS 代码拆分
     cssCodeSplit: true,
     // 构建后是否生成 source map 文件
-    sourcemap: false,
-    // 指定使用哪种混淆器
-    minify: 'terser',
-    // 传递给 Terser 的 minify 选项
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true
-      }
-    }
-  },
-  // 依赖优化配置
-  optimizeDeps: {
-    include: [
-      'vant'
-    ]
+    sourcemap: false
   }
 })

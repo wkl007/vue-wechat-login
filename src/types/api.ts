@@ -1,4 +1,4 @@
-import type { UserInfo } from '@/types/index'
+import type { UserInfo } from '@/types'
 
 export interface LoginReq {
   code: string

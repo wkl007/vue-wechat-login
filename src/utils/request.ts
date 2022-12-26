@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Toast } from 'vant'
+import { showToast } from 'vant'
 import store from '@/store/index'
 import { API_URL } from '@/utils/constants'
 
@@ -11,7 +11,10 @@ const service = axios.create({
 // http请求拦截器
 service.interceptors.request.use(config => {
   const { accessToken } = store.getters
-  if (accessToken) config.headers.Authorization = `JWT  ${accessToken}`
+  if (accessToken) {
+    // @ts-ignore
+    config.headers.Authorization = `JWT  ${accessToken}`
+  }
   return config
 }, err => {
   return Promise.reject(err)
@@ -28,7 +31,7 @@ service.interceptors.response.use(response => {
       window.location.reload()
     } else {
       // TODO错误提示
-      Toast({ message: errMsg })
+      showToast({ message: errMsg })
     }
   }
 }, err => {
