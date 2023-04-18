@@ -92,15 +92,12 @@
 
 .border-surround(@color) {
   &::before {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     border: 1px solid @color;
   }
 }
 
-@media (min-resolution: 2dppx) {
+@media (resolution >= 2dppx) {
   .border-top-1px {
     &::before {
       transform: scaleY(0.5);
@@ -134,7 +131,7 @@
   }
 }
 
-@media (min-resolution: 3dppx) {
+@media (resolution >= 3dppx) {
   .border-top-1px {
     &::before {
       transform: scaleY(0.333);
