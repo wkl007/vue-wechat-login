@@ -6,9 +6,6 @@ import viteCompression from 'vite-plugin-compression'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
-import eslintPlugin from 'vite-plugin-eslint'
-import stylelintPlugin from 'vite-plugin-stylelint'
-
 const path = require('path')
 
 const resolve = (dir: string) => path.join(__dirname, dir)
