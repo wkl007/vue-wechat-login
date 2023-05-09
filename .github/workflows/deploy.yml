@@ -22,5 +22,5 @@ jobs:
         run: npm install -g yarn
       - name: Lint
         run: |
-          npm install
-          npm run-script lint
+          yarn install
+          yarn lint
