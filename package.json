@@ -74,7 +74,7 @@
     "stylelint-order": "^6.0.3",
     "typescript": "^5.0.4",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.3.5",
+    "vite": "^4.3.9",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-pwa": "^0.14.7"
   }
