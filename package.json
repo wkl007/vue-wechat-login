@@ -65,7 +65,7 @@
     "postcss-less": "^6.0.0",
     "postcss-px-to-viewport-8-plugin": "^1.2.2",
     "qs": "^6.11.1",
-    "stylelint": "^15.6.1",
+    "stylelint": "^15.10.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended-vue": "^1.4.0",
