@@ -10,14 +10,14 @@
 
 1. 克隆项目，终端进入项目根目录
 
-```javascript
+```shell
 git clone https://github.com/wkl007/vue-wechat-login.git
 ```
 
 2. 安装项目依赖
 
-```javascript
-yarn install || npm install
+```shell
+pnpm install
 ```
 
 3. 修改项目环境变量中APP_URL与APP_ID
@@ -41,14 +41,14 @@ static login (data) {
 
 5. 本地运行
 
-```javascript
-yarn serve || npm run serve
+```shell
+pnpm dev
 ```
 
 6. 打包
 
-```javascript
-yarn build || npm run build
+```shell
+pnpm build
 ```
 
 ## 运行效果图
