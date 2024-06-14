@@ -1,4 +1,4 @@
-@import url("./variables");
+@import url('./variables');
 
 // 单行文本超出显示省略号
 .text-overflow-hidden {
@@ -9,12 +9,12 @@
 
 // 多行文本超出显示省略号
 .more-line-nowrap(@num) {
-  display: box;
+  display: -webkit-box;
   overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: @num;
   text-overflow: ellipsis;
   word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @num;
 }
 
 // 清除浮动
@@ -22,7 +22,7 @@
   &::after {
     display: table;
     clear: both;
-    content: "";
+    content: '';
   }
 }
 
@@ -50,7 +50,7 @@
     position: absolute;
     display: block;
     transform-origin: 0 0;
-    content: "";
+    content: '';
   }
 }
 

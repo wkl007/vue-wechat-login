@@ -1,5 +1,5 @@
-const autoprefixer = require('autoprefixer')
-const pxtoviewport = require('postcss-px-to-viewport-8-plugin')
+const autoprefixer = require('autoprefixer');
+const pxtoviewport = require('postcss-px-to-viewport-8-plugin');
 
 module.exports = {
   plugins: [
@@ -20,7 +20,7 @@ module.exports = {
       exclude: [],
       landscape: false,
       landscapeUnit: 'vw',
-      landscapeWidth: 568
-    })
-  ]
-}
+      landscapeWidth: 568,
+    }),
+  ],
+};

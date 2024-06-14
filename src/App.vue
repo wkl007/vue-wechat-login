@@ -1,20 +1,20 @@
 <template>
   <keep-alive>
-    <router-view v-if="$route.meta.keepAlive"/>
+    <router-view v-if="$route.meta.keepAlive" />
   </keep-alive>
-  <router-view v-if="!$route.meta.keepAlive"/>
+  <router-view v-if="!$route.meta.keepAlive" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'App'
-})
+  name: 'App',
+});
 </script>
 
 <style lang="less">
-@import url("./assets/styles/variables");
+@import url('./assets/styles/variables');
 
 #app {
   color: @color-text;

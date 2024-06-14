@@ -1,14 +1,13 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import { VitePWA } from 'vite-plugin-pwa'
-import viteCompression from 'vite-plugin-compression'
-import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers'
+import { defineConfig } from 'vite';
+import path from 'path';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import { VitePWA } from 'vite-plugin-pwa';
+import viteCompression from 'vite-plugin-compression';
+import Components from 'unplugin-vue-components/vite';
+import { VantResolver } from 'unplugin-vue-components/resolvers';
 
-const path = require('path')
-
-const resolve = (dir: string) => path.join(__dirname, dir)
+const resolve = (dir: string) => path.join(__dirname, dir);
 
 export default defineConfig({
   // 项目根目录
@@ -20,37 +19,37 @@ export default defineConfig({
     vue(),
     vueJsx(),
     Components({
-      resolvers: [VantResolver()]
+      resolvers: [VantResolver()],
     }),
     VitePWA({
       manifest: {},
       workbox: {
         skipWaiting: true,
-        clientsClaim: true
-      }
+        clientsClaim: true,
+      },
     }),
     viteCompression({
       verbose: true,
       disable: false,
       threshold: 10240,
       algorithm: 'gzip',
-      ext: '.gz'
+      ext: '.gz',
     }),
     viteCompression({
       verbose: true,
       disable: false,
       threshold: 10240,
       algorithm: 'brotliCompress',
-      ext: '.br'
-    })
+      ext: '.br',
+    }),
   ],
   // 静态资源服务的文件夹
   publicDir: 'public',
   resolve: {
     // 别名
     alias: {
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+    },
   },
   // css相关配置
   css: {
@@ -58,16 +57,16 @@ export default defineConfig({
       less: {
         lessOptions: {
           modifyVars: {},
-          javascriptEnabled: true
-        }
-      }
-    }
+          javascriptEnabled: true,
+        },
+      },
+    },
   },
   // 开发服务配置
   server: {
     host: true,
     open: true,
-    proxy: {}
+    proxy: {},
   },
   // 打包服务配置
   build: {
@@ -82,6 +81,6 @@ export default defineConfig({
     // 启用/禁用 CSS 代码拆分
     cssCodeSplit: true,
     // 构建后是否生成 source map 文件
-    sourcemap: false
-  }
-})
+    sourcemap: false,
+  },
+});
