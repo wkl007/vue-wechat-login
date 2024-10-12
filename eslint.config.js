@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import ESLint from '@eslint/js';
 import ESLintConfigPrettier from 'eslint-config-prettier';
 import Vue from 'eslint-plugin-vue';
+import vueTsEslintConfig from '@vue/eslint-config-typescript';
+import prettierConfig from '@vue/eslint-config-prettier';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,8 +24,8 @@ export default [
   ESLint.configs.recommended,
   ESLintConfigPrettier,
   ...Vue.configs['flat/recommended'],
-  ...compat.extends('@vue/eslint-config-typescript/recommended'),
-  ...compat.extends('@vue/eslint-config-prettier/skip-formatting'),
+  ...vueTsEslintConfig(),
+  prettierConfig,
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
