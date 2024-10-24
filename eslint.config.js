@@ -1,16 +1,9 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import globals from 'globals';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import ESLint from '@eslint/js';
 import ESLintConfigPrettier from 'eslint-config-prettier';
 import Vue from 'eslint-plugin-vue';
 import vueTsEslintConfig from '@vue/eslint-config-typescript';
 import prettierConfig from '@vue/eslint-config-prettier';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const compat = new FlatCompat({ baseDirectory: __dirname });
 
 export default [
   {
